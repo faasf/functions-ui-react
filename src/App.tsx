@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CacheProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import AppRoutes from './routes';
+import { BrowserRouter } from 'react-router-dom';
+import { OidcProvider } from '@axa-fr/react-oidc';
+import createCache from '@emotion/cache';
+import { theme } from './theme';
+import { Layout } from './components/Layout';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const clientSideEmotionCache = createCache({ key: 'css' });
+
+const configuration = {
+    client_id: 'react',
+    redirect_uri: 'http://localhost:3000/authentication/callback',
+    silent_redirect_uri: 'http://localhost:3000/authentication/silent-callback', // Optional activate silent-signin that use cookies between OIDC server and client javascript to restore the session
+    scope: 'openid profile functions',
+    authority: 'http://localhost:8081/realms/test',
+    // service_worker_relative_url:'/OidcServiceWorker.js',
+    // service_worker_only:true,
+};
+
+const App = () => {
+    return (
+        <CacheProvider value={clientSideEmotionCache}>
+            <OidcProvider configuration={configuration} >
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <BrowserRouter>
+                        <Layout>
+                            <AppRoutes />
+                        </Layout>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </OidcProvider>
+        </CacheProvider >
+    );
+};
 
 export default App;
