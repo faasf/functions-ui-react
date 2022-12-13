@@ -7,17 +7,15 @@ import { OidcProvider } from '@axa-fr/react-oidc';
 import createCache from '@emotion/cache';
 import { theme } from './theme';
 import { Layout } from './components/Layout';
+import { config } from './config';
 
 const clientSideEmotionCache = createCache({ key: 'css' });
 
 const configuration = {
-    client_id: 'react',
-    redirect_uri: 'http://localhost:3000/authentication/callback',
-    silent_redirect_uri: 'http://localhost:3000/authentication/silent-callback', // Optional activate silent-signin that use cookies between OIDC server and client javascript to restore the session
-    scope: 'openid profile functions',
-    authority: 'http://localhost:8081/realms/test',
-    // service_worker_relative_url:'/OidcServiceWorker.js',
-    // service_worker_only:true,
+    client_id: config.auth.clientId,
+    redirect_uri: config.auth.redirectUri,
+    scope: config.auth.scopes,
+    authority: config.auth.authority,
 };
 
 const App = () => {

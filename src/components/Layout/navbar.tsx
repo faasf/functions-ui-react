@@ -46,7 +46,7 @@ export const Navbar = (props : any) => {
             <MenuIcon fontSize="small" />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Notifications">
+          {/* <Tooltip title="Notifications">
             <IconButton sx={{ ml: 1 }}>
               <Badge
                 badgeContent={4}
@@ -56,8 +56,8 @@ export const Navbar = (props : any) => {
                 <BellIcon fontSize="small" />
               </Badge>
             </IconButton>
-          </Tooltip>
-          <Avatar
+          </Tooltip> */}
+          {/* <Avatar
             sx={{
               height: 40,
               width: 40,
@@ -66,7 +66,7 @@ export const Navbar = (props : any) => {
             src="/static/images/avatars/avatar_1.png"
           >
             <UserCircleIcon fontSize="small" />
-          </Avatar>
+          </Avatar> */}
           <Button onClick={() => logout()}>Logout</Button>
         </Toolbar>
       </NavbarRoot>

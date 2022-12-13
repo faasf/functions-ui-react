@@ -1,8 +1,8 @@
 import { Box, Button, CSSObject, Divider, Drawer as MuiDrawer, IconButton, styled, Theme } from '@mui/material';
-import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
-import { Cog as CogIcon } from '../../icons/cog';
-import { User as UserIcon } from '../../icons/user';
-import { Users as UsersIcon } from '../../icons/users';
+import SettingsIcon from '@mui/icons-material/Settings';
+import FunctionsIcon from '@mui/icons-material/Functions';
+import PageviewIcon from '@mui/icons-material/Pageview';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
 import { Link } from 'react-router-dom';
@@ -56,26 +56,26 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const items = [
-  {
-    href: '/',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
-  },
+  // {
+  //   href: '/',
+  //   icon: (<DashboardIcon fontSize="large" />),
+  //   title: 'Dashboard'
+  // },
   {
     href: '/functions',
-    icon: (<UsersIcon fontSize="small" />),
+    icon: (<FunctionsIcon fontSize="large" />),
     title: 'Functions'
   },
   {
-    href: '/account',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
+    href: '/logs',
+    icon: (<PageviewIcon fontSize="large" />),
+    title: 'Logs'
   },
-  {
-    href: '/settings',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Settings'
-  },
+  // {
+  //   href: '/settings',
+  //   icon: (<SettingsIcon fontSize="large" />),
+  //   title: 'Settings'
+  // },
 ];
 
 export const Sidebar = (props: any) => {
@@ -98,7 +98,7 @@ export const Sidebar = (props: any) => {
                 width: 64,
               }}
             >
-              <Link to="/">
+              <Link to="/functions">
                 <Logo
                   sx={{
                     height: 40,

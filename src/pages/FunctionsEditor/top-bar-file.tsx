@@ -2,8 +2,9 @@ import { IconButton, ListItemButton, ListItemIcon, ListItemText } from "@mui/mat
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { getLanguageIcon } from "../../utils/get-language-icon";
+import { TopbarFileData } from "./topbar-file-data";
 
-const TopBarFile = (props: any): JSX.Element => {
+const TopBarFile = (props: { fileData: TopbarFileData, onSelect: any, onClose: any }): JSX.Element => {
     const [hover, setHover] = useState(false);
     const { fileData, onSelect, onClose } = props;
 
@@ -43,7 +44,7 @@ const TopBarFile = (props: any): JSX.Element => {
                     minHeight: 30,
                 }}>
                     <ListItemIcon sx={{ minWidth: 25 }}>
-                        {getLanguageIcon(fileData.function.language)}
+                        {getLanguageIcon(fileData.function.sourceCode.language)}
                     </ListItemIcon>
                     <ListItemText
                         primary={fileData.function.name}
@@ -54,7 +55,7 @@ const TopBarFile = (props: any): JSX.Element => {
                         }}
                         primaryTypographyProps={{ fontSize: 12 }}
                     />
-                    {fileData.function.code !== fileData.function.initialCode ? (<div>M</div>) : undefined}
+                    {fileData.function.sourceCode.content !== fileData.function.initialCode ? (<div>M</div>) : undefined}
                     {hover ? <IconButton aria-label="close"
                         onClick={(e) => { e.stopPropagation(); onClose(); }}>
                         <CloseIcon style={{ fontSize: 10 }} />
