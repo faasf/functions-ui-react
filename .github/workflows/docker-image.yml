@@ -5,8 +5,7 @@ on:
     branches: [ "master" ]
     
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: jkostov/functions-ui
 
 jobs:
   build:
@@ -33,8 +32,8 @@ jobs:
       uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
       with:
         registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ secrets.HUB_USERNAME }}
+        password: ${{ secrets.HUB_PASSWORD }}
 
     - name: Extract Docker metadata
       id: meta
