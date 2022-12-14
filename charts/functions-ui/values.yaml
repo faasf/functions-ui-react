@@ -6,12 +6,12 @@ replicaCount: 1
 
 image:
   repository: jkostov/functions-ui
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "faas-functions-ui"
 
 serviceAccount:
   # Specifies whether a service account should be created
