@@ -11,7 +11,7 @@ import { FunctionStatus } from "../../models/FunctionStatus";
 
 const nodeCommonSource = 
 `export declare abstract class Secrets {
-    static getSecret(key: string): Promise<string | null>;
+    static getSecret(name: string, key?: string): Promise<string | null>;
 }
 export interface LogMessage {
     message: string;
