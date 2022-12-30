@@ -5,7 +5,7 @@ export const config = {
         scopes: process.env.REACT_APP_AUTH_SCOPES || 'openid profile functions',
         authority: process.env.REACT_APP_AUTH_AUTHORITY || 'http://keycloak.local/realms/faas',
     },
-    functionServiceUrl: process.env.REACT_APP_FUNCTIONS_SERVICE_URL || 'http://functions.local/',
+    functionServiceUrl: process.env.REACT_APP_FUNCTIONS_SERVICE_URL || 'http://functions.local',
     logsServiceUrl: process.env.REACT_APP_LOGS_SERVICE_URL || 'http://functions.local/as',
 }
 
